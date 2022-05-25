@@ -50,48 +50,45 @@ var questions = [
   }
 ];
 
-var board = document.getElementById("quiz-board")
-var questionH = document.getElementById("quest");
-// var answerR = document.querySelectorAll("answer")
-var ansA = document.getElementById("answer_a");
-var ansB = document.getElementById("answer_b");
-var ansC = document.getElementById("answer_c");
-var ansD = document.getElementById("answer_d");
-var submitBtn = document.getElementById("submit");
+var startButton = document.getElementById("startBtn")
+var questionsContainerElement = document.getElementById("questions-container")
+var shuffledQuestions, currentQuestionIndex
+var questionElement = document.getElementById("question")
+var answerButtons = document.getElementById("answerBtns")
 
-var currentQuiz = 0;
-var score = 0;
 
-loadQuiz();
+// start button calls startQuiz() 
+startButton.addEventListener('click', startQuiz)
 
-function loadQuiz() {
 
-  var currentQuizData = questions[currentQuiz];
+// shuffles questions and populates them in questions container once you click start 
+function startQuiz() {
+  console.log("started")
+  startButton.classList.add("hide")
+  shuffledQuestions = questions.sort(() => Math.random() -.5)
+  currentQuestionIndex = 0
+  questionsContainerElement.classList.remove("hide")
+  setNextQuestion()
+}
 
-  questionH.innerText = currentQuizData.question;
-  ansA.innerText = currentQuizData.a;
-  ansB.innerText = currentQuizData.b;
-  ansC.innerText = currentQuizData.c;
-  ansD.innerText = currentQuizData.d;
+function setNextQuestion() {
+  showQuestion(shuffledQuestions[currentQuestionIndex])
 
 }
 
-function deselectAnswers(){
-  answerR.forEach((answerW) => (answerW.checked = false));
+function showQuestion(question) {
+
+  questionElement.innerText = question.question
+  question.a, b, c, d. foreach(answer => {
+    var button = document.createElement("button")
+    button.innerText = answer.text
+    button.classList.add("btn")
+    if (answer == question.correct){
+      
+    }
+  })
 }
-// function getSelectedAnswer() {
-//   var radioBtn = form.
-// }
 
-submitBtn.addEventListener("click", () => {
-  selectedAnswer = document.forms["quiz"] ["ans"].value;
-  currentQuiz++
-  if (currentQuiz < questions.length) {
-    loadQuiz();
-  } else{
-      board.innerHTML = "Your score:"
-  }
+function selectAnswer() {
 
-});
-
-// console.log(selectedAnswer)
+}

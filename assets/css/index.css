@@ -46,8 +46,33 @@ body.wrong {
 
 .btn {
   --hue: var(--hue-neutral);
-  border: 1px, solid hsl(var(--hue-neutral), 100%, 30%);
-  background-color: hsl(var(--hue-neutral), 100%, 50%);
+  border: 1px, solid hsl(var(--hue), 100%, 30%);
+  background-color: hsl(var(--hue), 100%, 50%);
   border-radius: 5px;
-  padding: 5px, 10px;
+  padding: 10px;
+  color: white;
+  outline: none;
+}
+.btn:hover {
+  border-color: black;
+}
+
+.btn.wrong {
+  --hue: var(--hue-wrong)
+}
+.btn.correct {
+  --hue: var(--hue-correct)
+}
+
+.startBtn, .nextBtn {
+  font-weight: bold;
+  padding: 15px;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hide {
+  display: none;
 }
